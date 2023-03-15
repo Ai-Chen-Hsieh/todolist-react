@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = 'https://todo-list.alphacamp.io/';
+const baseUrl = 'https://todo-list.alphacamp.io/api';
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
     (config) => {
-        const token = localStorage.getItem('authToken');
+        const token = localStorage.get('authToken');
         if(token){
             config.headers['Authorization'] = `Bear ${token}`
         }
